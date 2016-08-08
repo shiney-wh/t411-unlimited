@@ -1,0 +1,36 @@
+t411_main_homepage:
+    path:     /
+    defaults: { _controller: T411MainBundle:Default:index }
+
+t411_main_top_100:
+    path:     /top/100
+    defaults: { _controller: T411MainBundle:Default:top100 }
+
+t411_main_suggest_movie:
+    path:     /suggest/movie
+    defaults: { _controller: T411MainBundle:Default:suggestMovie }
+
+t411_main_download:
+        path:     /download/{tid}
+        defaults: { _controller: T411MainBundle:Default:download}
+
+t411_main_fiche:
+        path:     /fiche/{tid}
+        defaults: { _controller: T411MainBundle:Default:fiche}
+
+t411_main_announce:
+        path:     /announce
+        defaults: { _controller: T411MainBundle:Default:announce}
+
+
+t411_rest:
+    path:  /rest
+
+
+t411_rest_search:
+    path:     /rest/torrents.json
+    defaults: { _controller: T411MainBundle:Rest:torrents }
+
+t411_rest_suggest_movies:
+    path:     /rest/suggest/movies.json
+    defaults: { _controller: T411MainBundle:Rest:suggestMovies }

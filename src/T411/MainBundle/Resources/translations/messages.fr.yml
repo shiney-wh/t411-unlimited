@@ -1,0 +1,3 @@
+scraper:
+    error:
+        host-hunreachable: 'T411 est actuellement indisponible. Réessayer plus tard :)'

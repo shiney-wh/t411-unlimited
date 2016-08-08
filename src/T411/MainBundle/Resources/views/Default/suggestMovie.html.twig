@@ -1,0 +1,84 @@
+{% extends '@T411Main/Default/layout.html.twig' %}
+
+{% block content %}
+    <div class="row container" ng-controller="SuggestCtrl">
+        <section class="col s12 m4 l2  card-panel">
+            <form ng-submit="submitSearch()">
+                <fieldset class="row">
+                    <p class="col s12">
+                        <label>Sortie après l'année
+                            <input type="number" ng-model="year" value="1995">
+                        </label>
+                    </p>
+
+                    <p class="range-field col s12 m12 l12">
+                        <label> Note : [[mark]] / 10
+                            <input type="range" min="0" max="10" name="mark" ng-model="mark" />
+                        </label>
+                    </p>
+
+                    <p class="input-field col s12 m12 l12">
+                        <select id="genre1" class="browser-default" title="Genre" name="genre1" ng-model="genre1">
+                            <option value="" selected>Tous les genres</option>
+                            {% for genre in genres %}
+                                <option value="{{ genre.id }}">{{ genre.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </p>
+                    <p class="input-field col s12 m12 l12">
+                        <select id="genre2" class="browser-default" title="Genre" name="genre2" ng-model="genre2">
+                            <option value="" selected>Tous les genres</option>
+                            {% for genre in genres %}
+                                <option value="{{ genre.id }}">{{ genre.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </p>
+                    <p class="center col s12 m12 l12">
+                        <input type="submit" class="btn" value="Suggerer">
+                    </p>
+                </fieldset>
+
+            </form>
+        </section>
+
+        <section id="services" class=" col s12 m8 l10 hide">
+            <div ng-show="loading" class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="movies" class="row">
+
+                <div class="col s12 m12 l12">
+                    <ul class="pagination">
+                        <li ng-repeat="id_page in range(1, total_pages)"
+                            ng-class="page == id_page ? 'active' : 'waves-effect' ">
+                            <a href="#!" ng-click="submitSearch(id_page)">[[id_page]]</a>
+                        </li>
+                    </ul>
+                </div>
+                <article ng-repeat="movie in movies" class="col s12 m6 l3">
+                    <div class="card blue darken-1">
+                        <main class="card-content white-text">
+                            <span class="card-title">[[movie.title]]</span>
+                            <img src="https://image.tmdb.org/t/p/w185[[movie.poster_path]]" />
+                        </main>
+                        <footer class="card-action">
+                            {#<a href="#">Rechercher un torrent</a>#}
+                        </footer>
+                    </div>
+                </article>
+            </section>
+
+        </section>
+    </div>
+{% endblock %}

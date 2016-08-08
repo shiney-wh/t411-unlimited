@@ -1,0 +1,100 @@
+@media screen  and (min-width: 1300px) {
+    table.table-torrents {
+        width: 1200px;
+    }
+}
+@media screen  and (max-width: 400px) {
+    table.table-torrents {
+        font-size: 5px;
+    }
+}
+@media screen  and (min-width: 400px) and (max-width: 800px) {
+    table.table-torrents {
+        font-size: 10px;
+    }
+}
+table.table-torrents {
+    margin: auto auto;
+}
+table.table-torrents tbody tr td {
+    padding: 5px 0 5px 0;
+}
+.cell-name {
+    width: 60%;
+}
+.cell-size {
+    width: 10%;
+}
+.cell-seeders {
+    width: 10%;
+}
+.cell-actions {
+    width: 20%;
+}
+table.table-torrents .btn {
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+}
+table.table-torrents tbody .cell-seeders {
+    text-align: center;
+}
+input#keywords {
+    width: 60%;
+}
+.table-torrents thead th {
+    cursor: pointer;
+}
+section#search {
+    margin: 40px auto;
+    padding: 25px 0;
+    text-align: center;
+}
+#categories {
+
+}
+.categorie {
+    min-width: 100px;
+    display: inline-block;
+}
+.categorie label {
+    padding-left: 25px !important;
+}
+body > nav {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+#logo {
+    position: relative;
+    top: -28px;
+    background: url("../images/logo411.png");
+    height: 117px;
+    width: 491px;
+}
+.tabs {
+    margin-bottom: 20px;
+}
+
+#suggest{
+    padding: 0px 30px;
+}
+
+fieldset{
+    border: none;
+    margin-bottom: 0 !important;
+}
+
+#movies .card-title{
+    font-size: 14px;
+    line-height: 14px;
+}
+#movies .card{
+    height: 400px;
+}
+#movies .card-action{
+    position: absolute;
+    bottom: 0px;
+}
+#movies img {
+    width: 100%;
+}

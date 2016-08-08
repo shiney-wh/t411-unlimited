@@ -1,0 +1,8 @@
+parameters:
+    t411_username:  ~       # Requiered ,  valid t411 account
+    t411_password: ~        # Requiered , valid t411 account
+    t411_cheated_key: ~     # Required  , key of cheated ratio (can be valid or ban )
+    tmdb_api_key: ""        # Optional :
+    cheated_tracker: ~      # Optional : if null then app cheated announce
+    locale: fr
+    secret: "abdejbkzfezhf"

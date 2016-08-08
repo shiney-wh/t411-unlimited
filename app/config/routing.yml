@@ -1,0 +1,7 @@
+t411_main:
+    resource: "@T411MainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+t411_root:
+    path: /
+

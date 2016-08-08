@@ -1,0 +1,16 @@
+services:
+   scraper:
+       class: T411\MainBundle\Service\APIScraper
+       arguments: ["@cache", "%t411_api%", "%t411_username%", "%t411_password%"]
+
+   tmdb:
+       class: T411\MainBundle\Service\APITmdb
+       arguments: ["@cache", "%tmdb_api_key%"]
+
+   cache_adapter:
+       class: Desarrolla2\Cache\Adapter\File
+       arguments: ["%kernel.cache_dir%"]
+
+   cache:
+       class: Desarrolla2\Cache\Cache
+       arguments: ["@cache_adapter"]

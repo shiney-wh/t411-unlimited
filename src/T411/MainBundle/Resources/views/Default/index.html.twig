@@ -1,0 +1,87 @@
+{% extends '@T411Main/Default/layout.html.twig' %}
+
+{% block content %}
+    <div class="row" ng-controller="SearchCtrl">
+        <div class="container">
+            <section id="search" class="card-panel">
+                <form ng-submit="submitSearch()">
+                    <section id="main-keywords" class="text-center">
+                        <input id="keywords" ng-model="keywords" type="text" name="keywords">
+                        <input id="btn-submit" type="submit" class="btn btn-success btn-sm" value="Rechercher">
+                    </section>
+
+                    <ul id="categories">
+                        <li class="categorie">
+                            <input name="cat" type="radio" id="cat-all" value="" ng-model="category" class="with-gap" />
+                            <label for="cat-all">Tous</label>
+                        </li>
+                        <li class="categorie">
+                            <input class="with-gap" name="cat" type="radio" id="cat-movie" value="631" ng-model="category" />
+                            <label for="cat-movie">Film</label>
+                        </li>
+                        <li class="categorie">
+                            <input class="with-gap" name="cat" type="radio" id="cat-serie" value="433" ng-model="category" />
+                            <label for="cat-serie">Série/Anime</label>
+                        </li>
+                        <li class="categorie">
+                            <input class="with-gap" name="cat" type="radio" id="cat-game" value="246" ng-model="category" />
+                            <label for="cat-game">Jeu</label>
+                        </li>
+                        <li class="categorie">
+                            <input class="with-gap" name="cat" type="radio" id="cat-mp3" value="623" ng-model="category" />
+                            <label for="cat-mp3">Musique</label>
+                        </li>
+                    </ul>
+
+                </form>
+
+                {#<small class="deep-orange-text darken-1-text">#}
+                {#Suite à des problèmes techniques du coté de T411, la recherche par catégorie est temporairement désactivée.#}
+                {#</small>#}
+            </section>
+        </div>
+
+        <section id="services" class="center col s12 hide">
+            <div ng-show="loading" class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <table ng-hide="loading || error" ng-table="tableParams" class="table table-torrents">
+                <tr ng-repeat="torrent in $data">
+                    <td class="cell-name" data-title="'Nom'" sortable="'name'">[[torrent.name]]</td>
+                    <td class="cell-size" data-title="'Taille'" sortable="'size'">[[torrent.sizeHuman]]</td>
+                    <td class="cell-seeders" class="center" data-title="'Seeders'" sortable="'seeders'">[[torrent.seeders]]</td>
+                    <td class="cell-actions" data-title="'Actions'">
+                        <a target="_tab" href="{{ path('t411_root') }}fiche/[[torrent.id]]">
+                            <button class="btn blue">Fiche</button>
+                        </a>
+                        <a href="{{ path('t411_root') }}download/[[torrent.id]]">
+                            <button class="btn green">Télécharger</button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <section id="error" ng-show="error" class="row hide">
+            <div class="col s12 m8 l8 offset-m2 offset-l2">
+                <div class="card red darken-4">
+                    <div class="card-content white-text">
+                        <h4 class="card-title">Une erreur est survenu !</h4>
+                        <p>[[error]]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

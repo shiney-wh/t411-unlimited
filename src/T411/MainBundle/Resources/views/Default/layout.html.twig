@@ -1,0 +1,62 @@
+{% import "@T411Main/Widget/Filters.twig" as wg_filter %}
+<!DOCTYPE html>
+<html lang="fr"
+      ng-app="App"
+      ng-init='urlRoot = "{{ path('t411_root') }}"'>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>T411 Unlimited</title>
+
+        {% stylesheets
+        "bundles/t411main/css/materialize.css"
+        "bundles/t411main/css/main.css"
+        "bundles/t411main/css/font-awesome.min.css"
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    </head>
+
+    <body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a id="logo" href="#" class="brand-logo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li {% if app.request.get('_route') == 't411_main_suggest_movie' %} class="active" {% endif %}>
+                    <a href="{{ path('t411_main_suggest_movie') }}">Suggestion de films</a>
+                </li>
+                <li {% if app.request.get('_route') == 't411_main_top_100' %} class="active" {% endif %}>
+                    <a href="{{ path('t411_main_top_100') }}">Top 100</a>
+                </li>
+                <li  {% if app.request.get('_route') == 't411_main_homepage' %} class="active" {% endif %}>
+                    <a href="{{ path('t411_main_homepage') }}">Rechercher</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+
+    {% javascripts
+    '@T411MainBundle/Resources/public/js/jquery.js'
+    '@T411MainBundle/Resources/public/js/angular.js'
+    '@T411MainBundle/Resources/public/js/angular.resource.js'
+    '@T411MainBundle/Resources/public/js/ng-table.js'
+    '@T411MainBundle/Resources/public/js/materialize/materialize.js'
+    '@T411MainBundle/Resources/public/js/materialize/tabs.js'
+    '@T411MainBundle/Resources/public/js/main.js'
+    '@T411MainBundle/Resources/public/js/app.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script type="text/javascript">
+        var base_url = "{{path('t411_main_homepage')}}";
+    </script>
+    </body>
+</html>

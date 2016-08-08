@@ -1,0 +1,57 @@
+{% extends '@T411Main/Default/layout.html.twig' %}
+
+{% set categories = {
+    'tous' : false,
+    'film' : 631,
+    'serie' : 433,
+    'jeu' : 246
+} %}
+
+{% block content %}
+    <div class="container row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#tous" class="active">Tous</a></li>
+                <li class="tab col s3"><a href="#film">Film</a></li>
+                <li class="tab col s3"><a href="#serie">Serie/Anime</a></li>
+                <li class="tab col s3"><a href="#jeu">Jeu</a></li>
+            </ul>
+        </div>
+        <section class="col s12">
+
+            {% for name,catid in categories %}
+                <div id="{{ name }}">
+                    <table class="table table-torrents">
+                        <thead>
+                        <tr>
+                            <th class="cell-name">Nom</th>
+                            <th class="cell-size">Taille</th>
+                            <th class="cell-seeders">Seeders</th>
+                            <th class="cell-actions">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for torrent in torrents %}
+                            {% if catid == false or torrent.categoryId == catid %}
+                                <tr>
+                                    <td>{{ torrent.name }}</td>
+                                    <td>{{ torrent.sizeHuman }}</td>
+                                    <td class="center">{{ torrent.seeders }}</td>
+                                    <td>
+                                        <a target="_tab" href="{{ path('t411_root') }}fiche/{{ torrent.id }}">
+                                            <button class="btn blue">Fiche</button>
+                                        </a>
+                                        <a href="{{ path('t411_root') }}download/{{ torrent.id }}">
+                                            <button class="btn green">Télécharger</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}
