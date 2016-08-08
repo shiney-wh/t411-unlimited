@@ -11,5 +11,5 @@
 /composer.phar
 /web/css
 /web/js
-.sass-cache/
+src/T411/MainBundle/Resources/bower_components/materialize/..sass-cache/
 .idea/

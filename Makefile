@@ -5,4 +5,7 @@ requirements:
 
 build-prod: requirements
 	@if [ ! -d "vendors" ]; then echo "[ERROR] You must run 'composer install' " ; exit; fi
-	SYMFONY_ENV=prod composer install -o --no-dev
+	SYMFONY_ENV=prod composer install -o
+	php app/console cache:clear -e prod
+	php app/console assetic:dump -e prod
+	php app/console assets:install -e prod
